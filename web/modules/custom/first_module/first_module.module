@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * This file demonstrates how to user hook function
+ */
+
+/**
+ * Implements hook_cron()
+ */
+function first_module_cron() {
+  \Drupal::messenger()->addMessage(t("Hello from first_module cron hook!"));
+}
+
+/**
+ * Implements hook_form_alter()
+ */
+function first_module_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'node_article_edit_form') {
+    $form['actions']['submit']['#value'] = t("Save this awesome article");
+  }
+}
+
+/**
+ * Implements hook_theme().
+ *
+ * Register a module or theme's theme implementations.
+ * The implementations declared by this hook specify how a 
+ * particular render array is to be rendered as HTML.
+ *
+ * If you change this method, clear theme registry and routing 
+ * table 'drush cc theme-registry' and 'drush cc router'.
+ */
+function first_module_theme()
+{
+  return [
+    'test_page' => [
+      'variables' => [
+        'variable1' => 'Yet another default text.',
+        'variable2' => 0,
+        'variable3' => [0, 0, 0],
+      ],
+    ],
+  ];
+}

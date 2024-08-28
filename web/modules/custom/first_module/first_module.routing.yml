@@ -1,0 +1,23 @@
+first_module.simplecontent: 
+  path: '/mycustompath'
+  defaults:
+    _controller: '\Drupal\first_module\Controller\FirstModuleController::simpleContent'
+    _title: 'Simplicity is the utimate sophistication'
+  requirements:
+    _permission: 'access content'
+
+first_module.variablecontent: 
+  path: '/mycustompath/{name_1}/{name_2}'
+  defaults:
+    _controller: '\Drupal\first_module\Controller\FirstModuleController::variableContent'
+    _title: 'Dynamic Greeting'
+  requirements:
+    _permission: 'access content'
+
+first_module.content:
+  path: '/example' 
+  defaults: 
+    _controller: '\Drupal\first_module\Controller\FirstModuleController::content' 
+    _title: 'Hello World'
+  requirements: 
+    _permission: 'access content' 

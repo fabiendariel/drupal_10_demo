@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Contains update functions for Views Bootstrap.
+ */
+
+/**
+ * Update Views Bootstrap style configuration for Bootstrap 5 options.
+ */
+function views_bootstrap_update_91001(&$sandbox) {
+  $config_factory = \Drupal::configFactory();
+
+  foreach ($config_factory->listAll('views.view.') as $view_config_name) {
+    $view = $config_factory->getEditable($view_config_name);
+    $save = FALSE;
+    $displays = $view->get('display');
+    foreach ($displays as $display_name => &$display) {
+      if (!empty($display['display_options']['style']) && !empty($display['display_options']['style']['options'])) {
+        $style = (string) $display['display_options']['style']['type'];
+        $options = $display['display_options']['style']['options'];
+
+        // Check cards for set columns value.
+        if ($style == 'views_bootstrap_cards' && !array_key_exists('columns', $options)) {
+          $display['display_options']['style']['options']['columns'] = 1;
+          \Drupal::logger('views_bootstrap')->notice("Updating cards column to default in $display_name for $view_config_name");
+          $save = TRUE;
+        }
+        // Check carousel for new options.
+        if ($style == 'views_bootstrap_carousel' && !array_key_exists('keyboard', $options)) {
+          $display['display_options']['style']['options']['keyboard'] = TRUE;
+          $display['display_options']['style']['options']['ride'] = TRUE;
+          $display['display_options']['style']['options']['use_caption'] = TRUE;
+          $display['display_options']['style']['options']['effect'] = 'slide';
+          \Drupal::logger('views_bootstrap')->notice("Updating options in $display_name for $view_config_name");
+          $save = TRUE;
+        }
+        // Check media object for image placement.
+        if ($style == 'views_bootstrap_media_object' && !array_key_exists('image_placement', $options)) {
+          $display['display_options']['style']['options']['image_placement'] = 'first';
+          \Drupal::logger('views_bootstrap')->notice("Updating image placement in $display_name for $view_config_name");
+          $save = TRUE;
+        }
+      }
+    }
+    if ($save) {
+      $view->set('display', $displays);
+      $view->save(TRUE);
+    }
+  }
+}

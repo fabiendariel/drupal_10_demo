@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the rsvplist module.
+ */
+function rsvplist_schema()
+{
+  // Create database table called 'rsvplist' with the following columns:
+  // id [serial], uid [int], nid [int], mail [varchar], created [int]
+  $schema['rsvplist'] = [
+    'description' => 'Stores email, timestamp, nid and uid for RSVP.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for this record.',
+        'type' => 'serial',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'description' => 'The {users}.uid that add this RSVP.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'nid' => [
+        'description' => 'The {node}.nid for this RSVP.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'email' => [
+        'description' => 'User\'s email address',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'created' => [
+        'description' => 'Timestamp for when RSVP was created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary_key' => ['id'],
+    'indexes' => [
+      'node' => ['nid'],
+      'node_user' => ['nid', 'uid'],
+    ],
+  ];
+
+  // Create database table called 'rsvplist_enabled' with the following columns:
+  // nid [int]
+  $schema['rsvplist_enabled'] = [
+    'description' => 'Track whether RSVP is enabled or not for a node.',
+    'fields' => [
+      'nid' => [
+        'description' => 'The {node}.nid that the RSVPList enabled.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary_key' => ['nid'],
+  ];
+
+  return $schema;
+}

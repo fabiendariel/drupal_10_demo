@@ -1,0 +1,6 @@
+first_module.simplecontentpage:
+  title: Simple Content Link
+  description: Link to simpleContent() method
+  route_name: first_module.simplecontent
+  weight: 10
+  menu_name: main
