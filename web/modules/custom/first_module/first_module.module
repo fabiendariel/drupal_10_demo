@@ -16,6 +16,7 @@ function first_module_cron() {
  * Implements hook_form_alter()
  */
 function first_module_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  \Drupal::messenger()->addMessage(t("Form Id is @id", ['@id' => $form_id]));
   if ($form_id == 'node_article_edit_form') {
     $form['actions']['submit']['#value'] = t("Save this awesome article");
   }
@@ -31,15 +32,27 @@ function first_module_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $f
  * If you change this method, clear theme registry and routing 
  * table 'drush cc theme-registry' and 'drush cc router'.
  */
-function first_module_theme()
-{
+/*function first_module_theme($existing, $type, $theme, $path) {
+  return array(
+    'block__first_module' => array(
+      'base hook' => 'custom_theme_content',
+      'variables' => array('var' => 'test'),
+    ),
+  );
+}*/
+
+/**
+ * Implements hook_theme().
+ *
+ * Register a module or theme's theme implementations.
+ * The implementations declared by this hook specify how a 
+ * particular render array is to be rendered as HTML.
+ *
+ * If you change this method, clear theme registry and routing 
+ * table 'drush cc theme-registry' and 'drush cc router'.
+ */
+function first_module_theme($existing, $type, $theme, $path) {
   return [
-    'test_page' => [
-      'variables' => [
-        'variable1' => 'Yet another default text.',
-        'variable2' => 0,
-        'variable3' => [0, 0, 0],
-      ],
-    ],
+    'client_page' => [],
   ];
 }

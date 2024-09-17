@@ -1,7 +1,0 @@
-name: 'Rsvp List'
-type: module
-description: 'Allows users to RSVP for Events.'
-package: Custom
-core_version_requirement: ^10
-dependencies:
-  - drupal:block

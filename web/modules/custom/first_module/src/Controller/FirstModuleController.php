@@ -22,8 +22,8 @@ final class FirstModuleController extends ControllerBase {
     return $build;
   }
 
-  public function simpleContent()
-  {
+  
+  public function simpleContent() {
     $build['content'] = [
       '#type' => 'markup',
       '#markup' => $this->t('Hello Drupal world.'),
@@ -32,8 +32,12 @@ final class FirstModuleController extends ControllerBase {
     return $build;
   }
 
-  public function variableContent(string $name_1, string $name_2)
-  {
+  /**
+   * Returns a render array for a test page.
+   *
+   * @return []
+   */
+  public function variableContent(string $name_1, string $name_2) {
     $build['content'] = [
       '#type' => 'markup',
       '#markup' => $this->t(
@@ -50,24 +54,27 @@ final class FirstModuleController extends ControllerBase {
    *
    * @return []
    */
-  public function content()
-  {
-
-    // Do something with your variables here.
-    $my_text = 'Hello World!';
-    $my_number = 1;
-    $my_array = [1, 2, 3];
-
+  public function clientContentPage() {  
     $build = [
       // Your theme hook name.
-      '#theme' => 'test_page',
-      // Your variables.
-      '#variable1' => $my_text,
-      '#variable2' => $my_number,
-      '#variable3' => $my_array,
+      '#theme' => 'client_page',
     ];
 
     return $build;
-  }  
+  }
+  
+  /**
+   * Returns a render array for a test page.
+   *
+   * @return []
+   */
+  public function servicesContentBlock() {  
+    $build['content'] = [
+      '#type' => 'item',
+      '#markup' => $this->t('It works!'),
+    ];
+
+    return $build;
+  }
 
 }

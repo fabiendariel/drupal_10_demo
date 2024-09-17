@@ -34,11 +34,11 @@ bootstrap_barrio_navbar_background: ''
 
 # Messages.
 # ----------------------------
-bootstrap_barrio_messages_widget: 'alerts'
+custom_theme_messages_widget: 'alerts'
 
 # Colors.
 # ----------------------------
-bootstrap_barrio_system_messages: 'messages_white'
+custom_theme_system_messages: 'messages_dark'
 
 # Tables.
 # ----------------------------

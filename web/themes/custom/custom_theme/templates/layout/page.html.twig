@@ -82,7 +82,10 @@
           {% endif %}
             {{ page.header }}
             {% if page.primary_menu or page.header_form %}
-              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="{{ navbar_collapse_btn_data }}" data-bs-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="{{ navbar_collapse_btn_data }}" data-bs-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+              </button>
               <div class="{{ navbar_collapse_class }}" id="CollapsingNavbar">
                 {% if navbar_offcanvas %}
                   <div class="offcanvas-header">
@@ -131,16 +134,8 @@
     {% endif %}
     <div id="main-wrapper" class="layout-main-wrapper clearfix">
       {% block content %}
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
-            </div>
-        </header>
-        <div id="main" class="{{ container }}">
-          {{ page.breadcrumb }}
+        {{ page.breadcrumb }}
+        <div id="main" class="{{ container }}">          
           <div class="row row-offcanvas row-offcanvas-left clearfix">
               <main{{ content_attributes }}>
                 <section class="section">
@@ -175,7 +170,7 @@
         </aside>
       </div>
     {% endif %}
-    <footer class="site-footer">
+    <footer class="site-footer pt-1">
       {% block footer %}
         <div class="{{ container }}">
           {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}

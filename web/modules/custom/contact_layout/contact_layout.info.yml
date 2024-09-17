@@ -1,0 +1,9 @@
+name: 'Contact Layout'
+type: module
+description: 'Allows users to contact for more infos.'
+package: 'Demo Website'
+core_version_requirement: ^10
+dependencies:
+  - drupal:block
+  
+configure: contact_layout.admin_settings

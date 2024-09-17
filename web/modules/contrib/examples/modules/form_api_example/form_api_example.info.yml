@@ -1,0 +1,14 @@
+name: Form API Example
+type: module
+description: Demonstrates the Drupal Form API.
+package: Example modules
+core_version_requirement: ^10.3
+configure: form_api_example.description
+dependencies:
+  - drupal:node
+  - examples:examples
+
+# Information added by Drupal.org packaging script on 2024-08-28
+version: '4.0.3'
+project: 'examples'
+datestamp: 1724874136

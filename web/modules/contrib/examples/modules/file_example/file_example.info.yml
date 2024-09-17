@@ -1,0 +1,14 @@
+name: File Example
+type: module
+description: Demonstrates using the Drupal File API and stream wrappers.
+package: Example modules
+core_version_requirement: ^10.3
+dependencies:
+  - drupal:file
+  - examples:examples
+  - examples:stream_wrapper_example
+
+# Information added by Drupal.org packaging script on 2024-08-28
+version: '4.0.3'
+project: 'examples'
+datestamp: 1724874136

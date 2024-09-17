@@ -1,0 +1,114 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the rsvplist module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function contact_layout_schema() {
+  // Create database table 'contact_layout' with the following columns:
+  // id [serial], nid [int], name [varchar], email [varchar], phone [varchar],
+  // message [text], created [int].
+  $schema['contact_layout'] = [
+    'description' => 'Stores email, timestamp, nid and uid for the Contact Form.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for this record.',
+        'type' => 'serial',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'The {node}.nid for this Contact.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'name' => [
+        'description' => 'User\'s name',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'email' => [
+        'description' => 'User\'s email address',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'phone' => [
+        'description' => 'User\'s phone number',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'message' => [
+        'description' => 'User\'s message',
+        'type' => 'text',
+        'length' => 1024,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'created' => [
+        'description' => 'Timestamp for when Contact was created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => [
+        'id',
+    ],
+    'indexes' => ['node' => ['nid']],
+  ];
+
+  // Create database table 'contact_layout_enabled' with the following columns:
+  // nid [int].
+  $schema['contact_layout_enabled'] = [
+    'description' => 'Track whether Contact Layout Form is enabled or not for a node.',
+    'fields' => [
+      'nid' => [
+        'description' => 'The {node}.nid that the Contact Layout Form enabled.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['nid'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function contact_layout_install() {
+  _contact_layout_install_grant_default_permissions();
+}
+
+/**
+ * Grants permissions for this module to authenticated users.
+ */
+function _contact_layout_install_grant_default_permissions() {
+  /** @var \Drupal\user\RoleInterface $authenticated_role */
+  $authenticated_role = \Drupal::entityTypeManager()->getStorage('user_role')->loadOverrideFree('authenticated');
+  if ($authenticated_role) {
+    $authenticated_role->grantPermission('access contact_layout report')->save();
+    $authenticated_role->grantPermission('view contact_layout_form')->save();
+  }
+
+  $anonymous_role = \Drupal::entityTypeManager()->getStorage('user_role')->loadOverrideFree('anonymous');
+  if ($anonymous_role) {
+    $anonymous_role->grantPermission('view contact_layout_form')->save();
+  }
+}

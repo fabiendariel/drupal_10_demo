@@ -1,6 +1,13 @@
-first_module.simplecontentpage:
-  title: Simple Content Link
-  description: Link to simpleContent() method
-  route_name: first_module.simplecontent
-  weight: 10
+first_module.clientcontentpage:
+  title: CLIENT
+  description: Link to client details page
+  route_name: first_module.clientcontentpage
+  weight: -46
   menu_name: main
+  
+first_module.servicescontent:
+  title: SERVICES
+  description: Link to services block
+  route_name: first_module.servicescontent
+  weight: -50
+  menu_name: main  

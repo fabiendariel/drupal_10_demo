@@ -1,0 +1,53 @@
+<?php
+
+use Drupal\block\Entity\Block;
+
+/**
+ * @file
+ * This file demonstrates how to user hook function.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function custom_blocks_theme() {
+  return [
+    'header_block' => [
+      'variables' => [],
+    ],
+    'footer_block' => [
+      'variables' => [],
+    ],
+  ];
+}
+
+/*
+ * $block = BlockContent::create([
+ *   'info' => 'block242',
+ *   'type' => 'basic',
+ *   'langcode' => 'en',
+ *   'body' => [
+ *     'value' => '<h1>Block body</h1>',*
+ *     'format' => 'full_html',
+ *   ],
+ * ]);
+ * $block->save();
+ *
+ * $placed_block = Block::create([
+ *   'id' => 'block242',
+ *   'theme' => 'custom_theme',
+ *   'weight' => -7,
+ *   'status' => TRUE,
+ *   'region' => 'breadcrumb',
+ *   'plugin' => 'block_content:' . $block->uuid(),
+ *   'settings' => [],
+ *   'visibility' => [
+ *     'request_path' => [
+ *       'id' => 'request_path',
+ *       'negate' => FALSE,
+ *       'pages' => '/your_page',
+ *     ],
+ *   ],
+ * ]);
+ * $placed_block->save();
+ */

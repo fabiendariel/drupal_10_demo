@@ -40,3 +40,10 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+
+messages:
+  css:
+    component:
+      css/components/messages.css: {}
+  js:
+    js/messages.js: {}

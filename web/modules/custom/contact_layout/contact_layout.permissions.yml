@@ -1,0 +1,10 @@
+view contact_layout_form:
+  title: 'View Contact Layout Form'
+  description: 'View  and Submit the Contact Layout form.'
+access contact_layout report:
+  title: 'Access List of Contact Layout'
+  description: 'View the report listing of all Contact Layout submitted'
+administer contact_layout:
+  title: 'Administer Contact Layout Settings'
+  description: 'Access the Contact Layout admin settings page'
+  restrict access: true

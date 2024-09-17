@@ -709,7 +709,7 @@ $settings['update_free_access'] = FALSE;
  * configuration values in settings.php will not fire any of the configuration
  * change events.
  */
-# $config['system.site']['name'] = 'My Drupal site';
+$config['system.site']['email'] = 'fdariel@gmail.com';
 # $config['user.settings']['anonymous'] = 'Visitor';
 
 /**
@@ -897,3 +897,5 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+
+$settings['file_private_path'] = $app_root . '/../private';

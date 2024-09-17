@@ -1,0 +1,14 @@
+name: DBTNG Example
+type: module
+description: 'Demonstrates how to use the database API: DBTNG.'
+package: Example modules
+core_version_requirement: ^10.3
+dependencies:
+  - drupal:node
+  - drupal:user
+  - examples:examples
+
+# Information added by Drupal.org packaging script on 2024-08-28
+version: '4.0.3'
+project: 'examples'
+datestamp: 1724874136

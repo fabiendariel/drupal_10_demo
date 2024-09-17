@@ -1,0 +1,7 @@
+name: 'Custom Blocks'
+type: module
+description: 'Code to create multiple customs blocks to place it in the layout'
+package: Demo Website
+core_version_requirement: ^10
+dependencies:
+ - drupal:block

@@ -14,10 +14,18 @@ first_module.variablecontent:
   requirements:
     _permission: 'access content'
 
-first_module.content:
+first_module.clientcontentpage:
   path: '/example' 
   defaults: 
-    _controller: '\Drupal\first_module\Controller\FirstModuleController::content' 
-    _title: 'Hello World'
+    _controller: '\Drupal\first_module\Controller\FirstModuleController::clientContentPage' 
+    _title: 'Clients'
   requirements: 
     _permission: 'access content' 
+    
+first_module.servicescontent:
+  path: '/services_content' 
+  defaults: 
+    _controller: '\Drupal\first_module\Controller\FirstModuleController::servicesContentBlock' 
+    _title: 'Services'
+  requirements: 
+    _permission: 'access content'    

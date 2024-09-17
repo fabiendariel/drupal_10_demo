@@ -1,0 +1,15 @@
+contact_layout.admin_settings: 
+  path: '/admin/config/content/contact_layout'
+  defaults:
+    _form: '\Drupal\contact_layout\Form\ContactLayoutSettingsForm'
+    _title: 'Contact Layout List Settings'
+  requirements:
+    _permission: 'administer contact_layout'
+    
+contact_layout.report: 
+  path: '/admin/reports/contact_layout'
+  defaults:
+    _controller: '\Drupal\contact_layout\Controller\ReportController::report'
+    _title: 'List of Contact requests'
+  requirements:
+    _permission: 'access contact_layout report'

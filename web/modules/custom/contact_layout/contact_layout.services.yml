@@ -1,0 +1,4 @@
+services:
+  contact_layout.enabler:
+    class: Drupal\contact_layout\EnablerService
+    arguments: ['@database']
