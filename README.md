@@ -18,3 +18,15 @@ And contrib module pre-install to test:
 - Examples
 
 Database backup is available in the private directory.
+
+You can access administration panel with login "admin" and password "12345"
+
+Custom report for the contact form submissions can be found in "Reports" > "List of Contact submissions"
+
+To configure which content type will offer the option to add the layout contact form you have to go in the "Configuration" menu 
+> "Content authoring"
+> "Contact Layout List Settings"
+
+After that you will have an option in the content editor 
+> "Contact Layout Collection" 
+> and check "Collect Contact Layout Form submissions for this node."
